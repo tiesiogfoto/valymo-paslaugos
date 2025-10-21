@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BTA AS – Rengjøringstjenester i Nordre Land og omegn</title>
-  <meta name="description" content="BTA AS tilbyr profesjonelle rengjøringstjenester: flyttevask, hjemmerengjøring, kontorrengjøring, byggrenhold og vindusvask i Nordre Land, Gjøvik og omegn." />
+  <!-- SEO: vietovės kaip Serviceområder (ta pačia tvarka) -->
+  <meta name="description" content="BTA AS tilbyr hyttevask og rengjøringstjenester i Dokka, Hov, Gjøvik, Lillehammer, Hafjell, Lenningen, Synnfjell, Bagn, Etnedal og Søndre/Nordre Land. Vi leverer hjemmevask, flyttevask, kontorvask, byggrenhold og vindusvask." />
   <meta name="theme-color" content="#111827" />
   <style>
-    :root{
-      --bg:#0b1220; --card:#111827; --muted:#6b7280; --text:#e5e7eb; --brand:#22c55e; --brand-2:#a3e635; --ring:#99f6e4;
-    }
+    :root{ --bg:#0b1220; --card:#111827; --muted:#6b7280; --text:#e5e7eb; --brand:#22c55e; --brand-2:#a3e635; --ring:#99f6e4; }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#0b1220 60%,#0d1324);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
@@ -22,7 +21,6 @@
     .nav a.btn{padding:10px 16px;border:1px solid rgba(255,255,255,.1);border-radius:12px;transition:.2s}
     .nav a.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0a0f1e;border:0;font-weight:700}
     .nav a.btn:hover{transform:translateY(-1px)}
-
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:48px 0}
     .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:var(--muted)}
     h1{font-size:44px;line-height:1.1;margin:14px 0 12px}
@@ -32,43 +30,33 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:.2s}
     .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1220;border:0;font-weight:800}
     .btn.secondary:hover,.btn.primary:hover{transform:translateY(-1px)}
-
-    .card{background:radial-gradient(1200px 600px at 10% -10%,rgba(34,197,94,.08),transparent 50%),
-           radial-gradient(800px 400px at 100% 10%,rgba(163,230,53,.08),transparent 40%),
-           var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .card{background:radial-gradient(1200px 600px at 10% -10%,rgba(34,197,94,.08),transparent 50%), radial-gradient(800px 400px at 100% 10%,rgba(163,230,53,.08),transparent 40%), var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .grid{display:grid;gap:18px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     .pill{font-size:13px;color:var(--muted)}
-
     .services .item{padding:18px}
     .services h3{margin:6px 0}
-
     .usp{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
     .usp .u{padding:14px;border:1px dashed rgba(255,255,255,.12);border-radius:14px;color:#cbd5e1}
-
     .section{padding:26px 0}
     .section h2{font-size:26px}
-
     .pricing .item{padding:20px}
     .pricing strong{font-size:22px}
-
     form{display:grid;gap:14px}
     .field{display:grid;gap:6px}
     input,select,textarea{background:#0f172a;color:var(--text);border:1px solid rgba(255,255,255,.12);padding:12px;border-radius:12px}
     label{font-size:14px;color:#cbd5e1}
     .two{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-
     footer{margin-top:28px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08);color:#94a3b8}
     .foot{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
     .small{font-size:13px;color:#94a3b8}
-
     @media (max-width: 880px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr}
       .grid.cols-2{grid-template-columns:1fr}
       .usp{grid-template-columns:1fr 1fr}
-      .foot{grid-template-columns:1fr}
+      .foot{display:grid;grid-template-columns:1fr}
       h1{font-size:34px}
     }
   </style>
@@ -103,7 +91,7 @@
         <p class="lead">Vi leverer hjemmerengjøring, flyttevask, kontorrengjøring, byggrenhold, vindusvask og tepperens. Fleksible avtaler, miljøvennlige midler og 100% fornøydgaranti.</p>
         <div class="cta">
           <a class="btn primary" href="#bestill">Bestill gratis befaring</a>
-          <a class="btn secondary" href="tel:+4799999999" aria-label="Ring oss">Ring: +47 99 99 99 99</a>
+          <a class="btn secondary" href="tel:+4799899980" aria-label="Ring oss">Ring: +47 99 89 99 80</a>
         </div>
         <div class="usp">
           <div class="u">✔ Forsikret og faktura fra norsk selskap</div>
@@ -189,7 +177,7 @@
       </div>
     </section>
 
-    <!-- PRICES -->
+    <!-- PRISER -->
     <section class="section pricing" id="priser">
       <h2>Eksempler på priser</h2>
 
@@ -214,10 +202,11 @@
         </div>
       </div>
 
-      <p class="small">Vi tilbyr hyttevask i Hafjell, Synnfjell og Lenningen og omegn.</p>
+      <!-- SEO: tie patys pavadinimai kaip Serviceområder -->
+      <p class="small">Vi tilbyr hyttevask og rengjøringstjenester i Dokka, Hov, Gjøvik, Lillehammer, Hafjell, Lenningen, Synnfjell, Bagn, Etnedal og Søndre/Nordre Land.</p>
       <p class="small">Alle priser er veiledende. Endelig pris avhenger av areal, tilstand, beliggenhet og spesielle ønsker. Vi fakturerer fra norsk selskap BTA AS.</p>
     </section>
-    <!-- /PRICES -->
+    <!-- /PRISER -->
 
     <section class="section" id="om">
       <h2>Om BTA AS</h2>
@@ -226,8 +215,8 @@
           <p>BTA AS er et lokalt selskap i Nordre Land. Vi leverer håndverk og tjenester – og nå tilbyr vi også profesjonell rengjøring. Vi er fleksible, effektive og setter kvalitet først. Våre rengjørere er pålitelige og erfarne.</p>
           <ul>
             <li>Base: Aust-Torpa / Nordre Land</li>
-            <li>Område: Dokka, Hov, Gjøvik, Lillehammer og omegn</li>
-            <li>Språk: norsk, engelsk, lietuvių</li>
+            <li>Område: Dokka, Hov, Gjøvik, Lillehammer, Hafjell, Lenningen, Synnfjell, Bagn, Etnedal og nærliggende områder</li>
+            <li>Språk: norsk, engelsk, lietuvių, russisk</li>
           </ul>
         </div>
         <div class="card" style="padding:18px">
@@ -251,7 +240,7 @@
               </div>
               <div class="field">
                 <label for="phone">Telefon</label>
-                <input id="phone" type="tel" required placeholder="+47 99 99 99 99" />
+                <input id="phone" type="tel" required placeholder="+47 99 89 99 80" />
               </div>
             </div>
             <div class="two">
@@ -293,13 +282,13 @@
         <div>
           <div class="card" style="padding:18px;margin-bottom:14px">
             <h3>Kontakt</h3>
-            <p>Telefon: <a href="tel:+4799999999">+47 99 99 99 99</a><br>E-post: <a href="mailto:post@bta-as.no">post@bta-as.no</a></p>
+            <p>Telefon: <a href="tel:+4799899980">+47 99 89 99 80</a><br>E-post: <a href="mailto:post@bta-as.no">post@bta-as.no</a></p>
             <p>Adresse: Aust-Torpa, Nordre Land</p>
             <p class="small">Åpningstider: Man–Fre 08:00–18:00 • Lørdag etter avtale</p>
           </div>
           <div class="card" style="padding:18px">
-            <h3>Serviceområder</h3>
-            <p>Dokka • Hov • Gjøvik • Lillehammer • Hafjell • Lenningen • Synnfjell • Østre/ Vestre Toten • Søndre/ Nordre Land</p>
+            <h3 id="kontakt">Serviceområder</h3>
+            <p>Dokka • Hov • Gjøvik • Lillehammer • Hafjell • Lenningen • Synnfjell • Bagn • Etnedal • Søndre/Nordre Land</p>
           </div>
         </div>
       </div>
@@ -311,7 +300,7 @@
       <div>
         <div class="logo" style="margin-bottom:8px">
           <div class="mark" aria-hidden="true"></div>
-          BTA AS • Org.nr  – Rengjøringstjenester
+          BTA AS • Org.nr 927 208 431 – Rengjøringstjenester
         </div>
         <p class="small">© <span id="year"></span> BTA AS. Alle rettigheter forbeholdt.</p>
       </div>
@@ -332,6 +321,7 @@
       const type = document.getElementById('stype').value;
       const m2 = Number(document.getElementById('size').value || 0);
       const freq = document.getElementById('freq').value;
+
       let rate = 75; // grunnpris per m² for flyttevask
       if(type === 'Hjemmerengjøring') rate = 12; // kr per m² per gang (estimat)
       if(type === 'Kontorrengjøring') rate = 10;
