@@ -6,10 +6,19 @@
   <title>BTA AS – Rengjøringstjenester i Nordre Land og omegn</title>
   <meta name="description" content="BTA AS tilbyr profesjonelle rengjøringstjenester i Nordre Land og omegn: hyttevask, hjemmerengjøring, kontorrengjøring, byggrenhold og vindusvask. Lokalt, pålitelig og effektivt." />
   <meta name="theme-color" content="#111827" />
+  <link rel="canonical" href="https://btaas.no/"/>
+
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:''; 
+  j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX'); // <- PAKEISK Į SAVO GTM ID
+  </script>
+  <!-- End Google Tag Manager -->
+
   <style>
-    :root{
-      --bg:#0b1220; --card:#111827; --muted:#6b7280; --text:#e5e7eb; --brand:#22c55e; --brand-2:#a3e635;
-    }
+    :root{--bg:#0b1220; --card:#111827; --muted:#6b7280; --text:#e5e7eb; --brand:#22c55e; --brand-2:#a3e635;}
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#0b1220 60%,#0d1324);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
@@ -40,8 +49,6 @@
     .usp .u{padding:14px;border:1px dashed rgba(255,255,255,.12);border-radius:14px;color:#cbd5e1}
     .section{padding:26px 0}
     .section h2{font-size:26px}
-    .pricing .item{padding:20px}
-    .pricing strong{font-size:22px}
     form{display:grid;gap:14px}
     .field{display:grid;gap:6px}
     input,select,textarea{background:#0f172a;color:var(--text);border:1px solid rgba(255,255,255,.12);padding:12px;border-radius:12px}
@@ -50,17 +57,15 @@
     footer{margin-top:28px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08);color:#94a3b8}
     .foot{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
     .small{font-size:13px;color:#94a3b8}
-    @media (max-width: 880px){
-      .hero{grid-template-columns:1fr}
-      .grid.cols-3{grid-template-columns:1fr}
-      .grid.cols-2{grid-template-columns:1fr}
-      .usp{grid-template-columns:1fr 1fr}
-      .foot{grid-template-columns:1fr}
-      h1{font-size:34px}
-    }
+    @media (max-width:880px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}.usp{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr}h1{font-size:34px}}
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <header>
     <div class="container nav">
       <div class="logo">
@@ -138,61 +143,23 @@
     <section class="section services" id="tjenester">
       <h2>Våre tjenester</h2>
       <div class="grid cols-3">
-        <div class="card item">
-          <span class="pill">Hjem</span>
-          <h3>Hjemmerengjøring</h3>
-          <p>Grundig ukentlig eller månedlig vask, skreddersydd etter dine behov. Støv, gulv, bad, kjøkken og mer.</p>
-        </div>
-        <div class="card item">
-          <span class="pill">Flytting</span>
-          <h3>Flyttevask</h3>
-          <p>Full nedvask etter krav fra utleier/megler. Vi tar med alt nødvendig utstyr og garanti på resultatet.</p>
-        </div>
-        <div class="card item">
-          <span class="pill">Bedrift</span>
-          <h3>Kontorrengjøring</h3>
-          <p>Faste avtaler for kontor og butikk. Ryddige lokaler for økt trivsel og bedre kundeservice.</p>
-        </div>
-        <div class="card item">
-          <span class="pill">Bygg</span>
-          <h3>Byggrenhold</h3>
-          <p>Under byggeprosjekt og sluttvask før overlevering. Effektivt team og HMS i fokus.</p>
-        </div>
-        <div class="card item">
-          <span class="pill">Vinduer</span>
-          <h3>Vindusvask</h3>
-          <p>Strekløse vinduer med rentvannssystem (innvendig/utvendig).</p>
-        </div>
-        <div class="card item">
-          <span class="pill">Rens</span>
-          <h3>Tepperens & møbelrens</h3>
-          <p>Skånsom dyprens som fjerner flekker, lukt og allergener.</p>
-        </div>
+        <div class="card item"><span class="pill">Hjem</span><h3>Hjemmerengjøring</h3><p>Grundig ukentlig eller månedlig vask, skreddersydd etter dine behov. Støv, gulv, bad, kjøkken og mer.</p></div>
+        <div class="card item"><span class="pill">Flytting</span><h3>Flyttevask</h3><p>Full nedvask etter krav fra utleier/megler. Vi tar med alt nødvendig utstyr og garanti på resultatet.</p></div>
+        <div class="card item"><span class="pill">Bedrift</span><h3>Kontorrengjøring</h3><p>Faste avtaler for kontor og butikk. Ryddige lokaler for økt trivsel og bedre kundeservice.</p></div>
+        <div class="card item"><span class="pill">Bygg</span><h3>Byggrenhold</h3><p>Under byggeprosjekt og sluttvask før overlevering. Effektivt team og HMS i fokus.</p></div>
+        <div class="card item"><span class="pill">Vinduer</span><h3>Vindusvask</h3><p>Strekløse vinduer med rentvannssystem (innvendig/utvendig).</p></div>
+        <div class="card item"><span class="pill">Rens</span><h3>Tepperens & møbelrens</h3><p>Skånsom dyprens som fjerner flekker, lukt og allergener.</p></div>
       </div>
     </section>
 
     <section class="section pricing" id="priser">
       <h2>Eksempler på priser</h2>
       <div class="grid cols-3">
-        <div class="card item">
-          <h3>Hyttevask</h3>
-          <p><strong>649 kr/time inkl. mva</strong></p>
-          <p class="small">Egner seg for Hafjell, Synnfjell, Lenningen og omegn.</p>
-        </div>
-        <div class="card item">
-          <h3>Privat renhold / hjemmevask</h3>
-          <p><strong>fra 490 kr/time inkl. mva</strong></p>
-          <p class="small">Rimeligere ved faste avtaler (ukentlig/månedlig).</p>
-        </div>
-        <div class="card item">
-          <h3>Flyttevask</h3>
-          <p><strong>fra 79 kr/m²</strong></p>
-          <p class="small">Endelig pris etter befaring (areal/tilstand).</p>
-        </div>
+        <div class="card item"><h3>Hyttevask</h3><p><strong>649 kr/time inkl. mva</strong></p><p class="small">Egner seg for Hafjell, Synnfjell, Lenningen og omegn.</p></div>
+        <div class="card item"><h3>Privat renhold / hjemmevask</h3><p><strong>fra 490 kr/time inkl. mva</strong></p><p class="small">Rimeligere ved faste avtaler (ukentlig/månedlig).</p></div>
+        <div class="card item"><h3>Flyttevask</h3><p><strong>fra 79 kr/m²</strong></p><p class="small">Endelig pris etter befaring (areal/tilstand).</p></div>
       </div>
-      <p class="small" style="margin-top:8px;">
-        Alle priser er veiledende. Endelig pris avhenger av areal, tilstand, beliggenhet og spesielle ønsker.
-      </p>
+      <p class="small" style="margin-top:8px;">Alle priser er veiledende. Endelig pris avhenger av areal, tilstand, beliggenhet og spesielle ønsker.</p>
     </section>
 
     <section class="section" id="om">
@@ -203,7 +170,7 @@
           <ul>
             <li>Base: Aust-Torpa / Nordre Land</li>
             <li>Område: Dokka, Hov, Gjøvik, Lillehammer, Hafjell, Lenningen, Synnfjell, Bagn, Etnedal og nærliggende områder</li>
-            <li>Språk: norsk, engelsk, lietuvių, русский</li>
+            <li>Språk: <strong>Norsk, Engelsk, Lietuvių, Русский</strong></li>
           </ul>
         </div>
         <div class="card" style="padding:18px">
@@ -221,46 +188,22 @@
         <div class="card" style="padding:18px">
           <form id="form">
             <div class="two">
-              <div class="field">
-                <label for="name">Navn</label>
-                <input id="name" required placeholder="Ola Nordmann" />
-              </div>
-              <div class="field">
-                <label for="phone">Telefon</label>
-                <input id="phone" type="tel" required placeholder="+47 99 89 99 80" />
-              </div>
+              <div class="field"><label for="name">Navn</label><input id="name" required placeholder="Ola Nordmann" /></div>
+              <div class="field"><label for="phone">Telefon</label><input id="phone" type="tel" required placeholder="+47 99 89 99 80" /></div>
             </div>
             <div class="two">
-              <div class="field">
-                <label for="email">E-post</label>
-                <input id="email" type="email" placeholder="deg@epost.no" />
-              </div>
-              <div class="field">
-                <label for="service">Tjeneste</label>
+              <div class="field"><label for="email">E-post</label><input id="email" type="email" placeholder="deg@epost.no" /></div>
+              <div class="field"><label for="service">Tjeneste</label>
                 <select id="service">
-                  <option>Hjemmerengjøring</option>
-                  <option>Flyttevask</option>
-                  <option>Kontorrengjøring</option>
-                  <option>Byggrenhold</option>
-                  <option>Vindusvask</option>
-                  <option>Tepperens</option>
+                  <option>Hjemmerengjøring</option><option>Flyttevask</option><option>Kontorrengjøring</option><option>Byggrenhold</option><option>Vindusvask</option><option>Tepperens</option>
                 </select>
               </div>
             </div>
             <div class="two">
-              <div class="field">
-                <label for="address">Adresse</label>
-                <input id="address" placeholder="Gate 1, 2870 Dokka" />
-              </div>
-              <div class="field">
-                <label for="date">Ønsket dato</label>
-                <input id="date" type="date" />
-              </div>
+              <div class="field"><label for="address">Adresse</label><input id="address" placeholder="Gate 1, 2870 Dokka" /></div>
+              <div class="field"><label for="date">Ønsket dato</label><input id="date" type="date" /></div>
             </div>
-            <div class="field">
-              <label for="msg">Tilleggsinfo (areal, rom, spesielle ønsker)</label>
-              <textarea id="msg" rows="4" placeholder="Leil. 70 m², 2 bad, ønsker grønne midler"></textarea>
-            </div>
+            <div class="field"><label for="msg">Tilleggsinfo (areal, rom, spesielle ønsker)</label><textarea id="msg" rows="4" placeholder="Leil. 70 m², 2 bad, ønsker grønne midler"></textarea></div>
             <button class="btn primary" type="submit">Send forespørsel</button>
             <p class="small">Ved å sende godtar du vår personvernerklæring og at vi kan kontakte deg om forespørselen.</p>
             <p id="reply" class="small" aria-live="polite"></p>
@@ -268,11 +211,9 @@
         </div>
         <div id="kontakt" class="card" style="padding:18px">
           <h3>Kontakt</h3>
-          <p>Telefon: <a href="tel:+4799899980">+47 99 89 99 80</a><br>
-             E-post: <a href="mailto:post@btaas.no">post@btaas.no</a></p>
+          <p>Telefon: <a href="tel:+4799899980">+47 99 89 99 80</a><br>E-post: <a href="mailto:post@btaas.no">post@btaas.no</a></p>
           <p>Adresse: Aust-Torpa, Nordre Land</p>
           <p class="small">Åpningstider: Man–Fre 08:00–18:00 • Lørdag etter avtale</p>
-
           <div class="card" style="padding:14px;margin-top:10px;background:transparent;border:1px dashed rgba(255,255,255,.12)">
             <h4 style="margin:0 0 8px 0">Serviceområder</h4>
             <p style="margin:0">Dokka • Hov • Gjøvik • Lillehammer • Hafjell • Lenningen • Synnfjell • Bagn • Etnedal • Søndre/Nordre Land</p>
@@ -285,8 +226,7 @@
   <footer>
     <div class="container foot">
       <div>
-        <div class="logo" style="margin-bottom:8px">
-          <div class="mark" aria-hidden="true"></div>
+        <div class="logo" style="margin-bottom:8px"><div class="mark" aria-hidden="true"></div>
           BTA AS • Org.nr 927208431 – Rengjøringstjenester
         </div>
         <p class="small">© <span id="year"></span> BTA AS. Alle rettigheter forbeholdt.</p>
@@ -298,44 +238,30 @@
   </footer>
 
   <script>
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
-
-    // Enkel estimator
-    const calc = document.getElementById('calc');
-    const est = document.getElementById('est');
-    calc.addEventListener('submit', (e)=>{
-      e.preventDefault();
+    const yearEl = document.getElementById('year'); yearEl.textContent = new Date().getFullYear();
+    const calc = document.getElementById('calc'); const est = document.getElementById('est');
+    calc.addEventListener('submit', (e)=>{e.preventDefault();
       const type = document.getElementById('stype').value;
       const m2 = Number(document.getElementById('size').value || 0);
       const freq = document.getElementById('freq').value;
-      let rate = 75; // grunnpris per m² for flyttevask
-      if(type === 'Hjemmerengjøring') rate = 12; // estimert per m² per gang
+      let rate = 75;
+      if(type === 'Hjemmerengjøring') rate = 12;
       if(type === 'Kontorrengjøring') rate = 10;
       if(type === 'Byggrenhold') rate = 20;
       if(type === 'Vindusvask') rate = 8;
       if(type === 'Tepperens') rate = 25;
-
       let total = m2 * rate;
       if(freq === 'Ukentlig') total *= 0.85;
       if(freq === 'Annenhver uke') total *= 0.9;
       if(freq === 'Månedlig') total *= 0.95;
-
       est.textContent = `Estimert pris: ca. ${Math.round(total)} kr (ikke bindende – endelig pris etter befaring).`;
     });
-
-    // "Skjema sendt" informasjon (lokal)
-    const form = document.getElementById('form');
-    const reply = document.getElementById('reply');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
+    const form = document.getElementById('form'); const reply = document.getElementById('reply');
+    form.addEventListener('submit', (e)=>{e.preventDefault();
       const data = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        service: document.getElementById('service').value,
-        address: document.getElementById('address').value,
-        date: document.getElementById('date').value,
+        name: document.getElementById('name').value, phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value, service: document.getElementById('service').value,
+        address: document.getElementById('address').value, date: document.getElementById('date').value,
         msg: document.getElementById('msg').value,
       };
       console.log('Forespørsel', data);
