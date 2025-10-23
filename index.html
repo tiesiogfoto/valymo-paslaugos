@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <!-- Google Tag Manager (GTM only) -->
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-P98Q99WC');
-  </script>
-  <!-- End GTM -->
+  'https://www.googletagmanager.com/gtm.js?id=GTM-P98Q99WC'+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P98Q99WC');</script>
+  <!-- End Google Tag Manager -->
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,7 +29,7 @@
   <meta name="twitter:title" content="BTA AS – Rengjøringstjenester i Nordre Land og omegn">
   <meta name="twitter:description" content="Profesjonell hyttevask, hjemmerengjøring, flyttevask, kontor- og byggrenhold i Innlandet. Ring +47 99 89 99 80.">
 
-  <!-- Optional keywords -->
+  <!-- Optional keywords for long-tail searches -->
   <meta name="keywords" content="rengjøring Innlandet, privat renhold Innlandet, hyttevask Hafjell, hyttevask Synnfjell, hyttevask Lenningen, hjemmerengjøring Dokka, flyttevask Gjøvik, flyttevask Lillehammer, rengjøringsbyrå Nordre Land, BTA AS rengjøring">
 
   <style>
@@ -155,7 +153,7 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Q99WC"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End GTM (noscript) -->
+  <!-- End Google Tag Manager (noscript) -->
 
   <header>
     <div class="container nav">
@@ -398,55 +396,48 @@
   </footer>
 
   <script>
-    // Footer year
     const yearEl = document.getElementById('year');
     yearEl.textContent = new Date().getFullYear();
 
-    // Enkel kalkulator
     const calc = document.getElementById('calc');
     const est = document.getElementById('est');
-    if (calc) {
-      calc.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const type = document.getElementById('stype').value;
-        const m2 = Number(document.getElementById('size').value || 0);
-        const freq = document.getElementById('freq').value;
-        let rate = 75; // grunnpris per m² for flyttevask
-        if(type === 'Hjemmerengjøring') rate = 12; // kr per m² per gang (estimat)
-        if(type === 'Kontorrengjøring') rate = 10;
-        if(type === 'Byggrenhold') rate = 20;
-        if(type === 'Vindusvask') rate = 8;
-        if(type === 'Tepperens') rate = 25;
+    calc.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const type = document.getElementById('stype').value;
+      const m2 = Number(document.getElementById('size').value || 0);
+      const freq = document.getElementById('freq').value;
+      let rate = 75; // grunnpris per m² for flyttevask
+      if(type === 'Hjemmerengjøring') rate = 12; // kr per m² per gang (estimat)
+      if(type === 'Kontorrengjøring') rate = 10;
+      if(type === 'Byggrenhold') rate = 20;
+      if(type === 'Vindusvask') rate = 8;
+      if(type === 'Tepperens') rate = 25;
 
-        let total = m2 * rate;
-        if(freq === 'Ukentlig') total *= 0.85;
-        if(freq === 'Annenhver uke') total *= 0.9;
-        if(freq === 'Månedlig') total *= 0.95;
+      let total = m2 * rate;
+      if(freq === 'Ukentlig') total *= 0.85;
+      if(freq === 'Annenhver uke') total *= 0.9;
+      if(freq === 'Månedlig') total *= 0.95;
 
-        est.textContent = `Estimert pris: ca. ${Math.round(total)} kr (ikke bindende – endelig pris etter befaring).`;
-      });
-    }
+      est.textContent = `Estimert pris: ca. ${Math.round(total)} kr (ikke bindende – endelig pris etter befaring).`;
+    });
 
-    // Lead form (demo)
     const form = document.getElementById('form');
     const reply = document.getElementById('reply');
-    if (form) {
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const data = {
-          name: document.getElementById('name').value,
-          phone: document.getElementById('phone').value,
-          email: document.getElementById('email').value,
-          service: document.getElementById('service').value,
-          address: document.getElementById('address').value,
-          date: document.getElementById('date').value,
-          msg: document.getElementById('msg').value,
-        };
-        console.log('Forespørsel', data);
-        reply.textContent = 'Takk! Forespørselen er registrert. Vi kontakter deg snart.';
-        form.reset();
-      });
-    }
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        service: document.getElementById('service').value,
+        address: document.getElementById('address').value,
+        date: document.getElementById('date').value,
+        msg: document.getElementById('msg').value,
+      };
+      console.log('Forespørsel', data);
+      reply.textContent = 'Takk! Forespørselen er registrert. Vi kontakter deg snart.';
+      form.reset();
+    });
   </script>
 </body>
 </html>
