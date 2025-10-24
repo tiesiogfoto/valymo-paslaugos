@@ -12,13 +12,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- SEO -->
   <title>Renhold i Nordre Land, Dokka & Gjøvik | Hyttevask & Flyttevask | BTA AS</title>
   <meta name="description" content="BTA AS – lokalt renhold i Nordre Land, Dokka og Gjøvik. Hjemmerenhold, hyttevask, flyttevask, kontorrengjøring, byggrengjøring og vindusvask. Rask respons og fornøydgaranti. Ring +47 99 89 99 80.">
   <link rel="canonical" href="https://btaas.no/"/>
   <meta name="keywords" content="renhold Nordre Land, rengjøring Dokka, hyttevask Synnfjell, hyttevask Lenningen, flyttevask Gjøvik, hjemmerenhold Dokka, BTA AS rengjøring">
 
-  <!-- Open Graph / Twitter -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BTA AS">
   <meta property="og:locale" content="no_NO">
@@ -26,18 +25,18 @@
   <meta property="og:description" content="Hyttevask, flyttevask og hjemmerenhold – lokalt og pålitelig.">
   <meta property="og:url" content="https://btaas.no/">
   <meta property="og:image" content="https://btaas.no/icon.png">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Renhold i Nordre Land, Dokka & Gjøvik | BTA AS">
   <meta name="twitter:description" content="Lokalt renhold – rask respons og fornøydgaranti.">
   <meta name="twitter:image" content="https://btaas.no/icon.png">
+
   <meta name="theme-color" content="#111827" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-  <!-- Styles -->
   <style>
-    :root{
-      --bg:#0b1220; --card:#111827; --muted:#6b7280; --text:#e5e7eb; --brand:#22c55e; --brand-2:#a3e635;
-    }
+    :root{ --bg:#0b1220; --card:#111827; --muted:#6b7280; --text:#e5e7eb; --brand:#22c55e; --brand-2:#a3e635; }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220,#0b1220 60%,#0d1324);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
@@ -91,6 +90,7 @@
 
     .call-sticky{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
     .call-sticky a{display:block;text-align:center;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1220;font-weight:800;border:0}
+
     @media (max-width: 880px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr}
@@ -105,36 +105,33 @@
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness","CleaningService"],
-    "name": "BTA AS",
-    "url": "https://btaas.no/",
-    "telephone": "+47 99899980",
-    "email": "post@btaas.no",
-    "priceRange": "kr",
-    "image": "https://btaas.no/icon.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vest-Torpvegen 2004",
-      "postalCode": "2881",
-      "addressLocality": "Aust-Torpa",
-      "addressRegion": "Innlandet",
-      "addressCountry": "NO"
+    "@context":"https://schema.org",
+    "@type":["LocalBusiness","CleaningService"],
+    "name":"BTA AS",
+    "url":"https://btaas.no/",
+    "telephone":"+47 99899980",
+    "email":"post@btaas.no",
+    "priceRange":"kr",
+    "image":"https://btaas.no/icon.png",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Vest-Torpvegen 2004",
+      "postalCode":"2881",
+      "addressLocality":"Aust-Torpa",
+      "addressRegion":"Innlandet",
+      "addressCountry":"NO"
     },
-    "areaServed": [
-      "Nordre Land","Dokka","Hov","Gjøvik",
-      "Synnfjell","Lenningen","Hafjell","Etnedal","Bagn"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Rengjøringstjenester",
-      "itemListElement": [
-        { "@type":"Offer", "name":"Hyttevask", "url":"https://btaas.no/hyttevask.html" },
-        { "@type":"Offer", "name":"Hjemmerenhold", "url":"https://btaas.no/hjemmerenhold.html" },
-        { "@type":"Offer", "name":"Flyttevask", "url":"https://btaas.no/flyttevask.html" },
-        { "@type":"Offer", "name":"Kontorrengjøring", "url":"https://btaas.no/kontorrengjoring.html" },
-        { "@type":"Offer", "name":"Byggrengjøring", "url":"https://btaas.no/byggrengjoring.html" },
-        { "@type":"Offer", "name":"Vindusvask", "url":"https://btaas.no/vindusvask.html" }
+    "areaServed":["Nordre Land","Dokka","Hov","Gjøvik","Synnfjell","Lenningen","Hafjell","Etnedal","Bagn"],
+    "hasOfferCatalog":{
+      "@type":"OfferCatalog",
+      "name":"Rengjøringstjenester",
+      "itemListElement":[
+        {"@type":"Offer","name":"Hyttevask","url":"https://btaas.no/hyttevask.html"},
+        {"@type":"Offer","name":"Hjemmerenhold","url":"https://btaas.no/hjemmerenhold.html"},
+        {"@type":"Offer","name":"Flyttevask","url":"https://btaas.no/flyttevask.html"},
+        {"@type":"Offer","name":"Kontorrengjøring","url":"https://btaas.no/kontorrengjoring.html"},
+        {"@type":"Offer","name":"Byggrengjøring","url":"https://btaas.no/byggrengjoring.html"},
+        {"@type":"Offer","name":"Vindusvask","url":"https://btaas.no/vindusvask.html"}
       ]
     }
   }
@@ -218,6 +215,23 @@
       </div>
     </section>
 
+    <section class="section" id="seo-lokasjoner">
+      <div class="card" style="padding:18px">
+        <h2 style="margin:0 0 8px">Hyttevask i fjellområder</h2>
+        <p class="small" style="margin:0 0 8px;color:#cbd5e1">Rask hjelp i Synnfjell, Lenningen, Etnedal, Bagn, Hafjell, Nord-Torpa, Gamlestølen og Hugulia.</p>
+        <p style="margin:0;display:flex;flex-wrap:wrap;gap:10px;">
+          <a href="/hyttevask-synnfjell.html">Synnfjell</a> •
+          <a href="/hyttevask-lenningen.html">Lenningen</a> •
+          <a href="/hyttevask-etnedal.html">Etnedal</a> •
+          <a href="/hyttevask-bagn.html">Bagn</a> •
+          <a href="/hyttevask-hafjell.html">Hafjell</a> •
+          <a href="/hyttevask-nord-torpa.html">Nord-Torpa</a> •
+          <a href="/hyttevask-gamlestolen.html">Gamlestølen</a> •
+          <a href="/hyttevask-hugulia.html">Hugulia</a>
+        </p>
+      </div>
+    </section>
+
     <section class="section services" id="tjenester">
       <h2>Våre tjenester</h2>
       <div class="grid cols-3">
@@ -232,7 +246,6 @@
           <h3>Hyttevask</h3>
           <p>Hyttevask i Synnfjell, Lenningen, Hafjell, Etnedal, Bagn og omegn – fleksible avtaler.</p>
           <p><a href="/hyttevask.html">Les mer →</a></p>
-          <p class="small"><a href="/hyttevask-synnfjell.html">Synnfjell</a> • <a href="/hyttevask-hafjell.html">Hafjell</a> • <a href="/hyttevask-lenningen.html">Lenningen</a> • <a href="/hyttevask-etnedal.html">Etnedal</a> • <a href="/hyttevask-bagn.html">Bagn</a></p>
         </div>
         <div class="card item">
           <span class="pill">Flytting</span>
@@ -307,14 +320,12 @@
       <h2>Bestill befaring / få tilbud</h2>
       <div class="grid cols-2">
         <div class="card" style="padding:18px">
-          <!-- REAL FORM: FormSubmit (el. pakeisk į savo backend) -->
           <form id="form" action="https://formsubmit.co/post@btaas.no" method="POST">
             <input type="hidden" name="_next" value="https://btaas.no/takk.html">
             <input type="hidden" name="_subject" value="Ny forespørsel fra btaas.no">
             <input type="hidden" name="_template" value="table">
             <input type="text" name="_honey" style="display:none">
             <input type="hidden" name="_captcha" value="false">
-
             <div class="two">
               <div class="field">
                 <label for="name">Navn</label>
@@ -333,7 +344,7 @@
               <div class="field">
                 <label for="service">Tjeneste</label>
                 <select id="service" name="Tjeneste">
-                  <option>Hjemmerengjøring</option>
+                  <option>Hjemmerenhold</option>
                   <option>Hyttevask</option>
                   <option>Flyttevask</option>
                   <option>Kontorrengjøring</option>
@@ -398,8 +409,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Kalkuliatorius (be "Tepperens")
     const calc = document.getElementById('calc');
     const est = document.getElementById('est');
     calc.addEventListener('submit', (e)=>{
@@ -407,18 +416,15 @@
       const type = document.getElementById('stype').value;
       const m2 = Number(document.getElementById('size').value || 0);
       const freq = document.getElementById('freq').value;
-
-      let rate = 75; // Flyttevask (kr/m²)
-      if(type === 'Hjemmerengjøring') rate = 12; // kr per m² (estimat pr. gang)
+      let rate = 75;
+      if(type === 'Hjemmerengjøring') rate = 12;
       if(type === 'Kontorrengjøring') rate = 10;
       if(type === 'Byggrengjøring') rate = 20;
       if(type === 'Vindusvask') rate = 8;
-
       let total = m2 * rate;
       if(freq === 'Ukentlig') total *= 0.85;
-      if(freq === 'Annenhver uke') total *= 0.90;
+      if(freq === 'Annenhver uke') total *= 0.9;
       if(freq === 'Månedlig') total *= 0.95;
-
       est.textContent = `Estimert pris: ca. ${Math.round(total)} kr (ikke bindende – endelig pris etter befaring).`;
     });
   </script>
