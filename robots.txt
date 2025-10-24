@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+
 Sitemap: https://btaas.no/sitemap.xml
+Host: https://btaas.no
