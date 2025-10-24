@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Pagrindinis puslapis -->
+  <!-- Pagrindinis -->
   <url>
     <loc>https://btaas.no/</loc>
     <lastmod>2025-10-24</lastmod>
@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Kontakt / takk -->
+  <!-- Kontakt / Takk -->
   <url>
     <loc>https://btaas.no/takk.html</loc>
     <lastmod>2025-10-24</lastmod>
@@ -17,98 +17,24 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Tjenester -->
-  <url>
-    <loc>https://btaas.no/hjemmerenhold</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/flyttevask</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/kontorrengjoring</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/vindusvask</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/byggrengjoring</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/trappevask</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Tjenester (naudoja .html, kaip tavo failai) -->
+  <url><loc>https://btaas.no/hjemmerenhold.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://btaas.no/hyttevask.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://btaas.no/flyttevask.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://btaas.no/kontorrengjoring.html</loc><lastmod>2025-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://btaas.no/vindusvask.html</loc><lastmod>2025-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://btaas.no/byggrengjoring.html</loc><lastmod>2025-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://btaas.no/trappevask.html</loc><lastmod>2025-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Lokale hyttevask-sider -->
-  <url>
-    <loc>https://btaas.no/hyttevask-synnfjell.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-lenningen.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-etnedal.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-bagn.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-hafjell.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-nord-torpa.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-gamlestolen.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://btaas.no/hyttevask-hugulia.html</loc>
-    <lastmod>2025-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
+  <!-- Lokaliniai hyttevask puslapiai -->
+  <url><loc>https://btaas.no/hyttevask-synnfjell.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-lenningen.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-etnedal.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-bagn.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-hafjell.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-nord-torpa.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-gamlestolen.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://btaas.no/hyttevask-hugulia.html</loc><lastmod>2025-10-24</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
 
 </urlset>
+
