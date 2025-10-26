@@ -1,0 +1,9 @@
+{
+  "name": "btaas-no",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/inject-gtm.js",
+    "build": "echo 'Static site – nothing to build'",
+    "vercel-build": "node scripts/inject-gtm.js"
+  }
+}
