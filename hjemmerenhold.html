@@ -1,26 +1,189 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hjemmerenhold | BTA AS</title>
-  <meta name="description" content="Privat renhold i Nordre Land, Dokka og Gjøvik. Fast vask ukentlig/månedlig – skreddersydd etter behov.">
-  <link rel="canonical" href="https://btaas.no/hjemmerenhold.html" />
-  <style>body{font-family:Arial;margin:0;background:#0b1220;color:#e5e7eb}a{color:#a3e635}.wrap{max-width:960px;margin:0 auto;padding:24px}.card{background:#111827;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px;margin-bottom:18px}h1{color:#a3e635;margin:0 0 10px}h2{margin:18px 0 8px}ul{margin:0 0 10px 18px}.btn{display:inline-block;background:linear-gradient(135deg,#22c55e,#a3e635);color:#0b1220;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none}.grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}@media(max-width:900px){.grid{grid-template-columns:1fr}}</style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Hjemmerenhold", "serviceType": "Hjemmerenhold", "provider": {"@type": "LocalBusiness", "name": "BTA AS", "telephone": "+47 99899980", "email": "post@btaas.no", "url": "https://btaas.no/"}}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hjemmerenhold i Dokka, Nordre Land, Hov, Gjøvik, Lillehammer og Etnedal | Fra 490 kr/time | BTA AS</title>
+  <meta name="description" content="Profesjonell hjemmerenhold for hus og leiligheter i Dokka, Nordre Land/Aust-Torpa, Hov, Gjøvik, Lillehammer og Etnedal. Fra 490 kr/time inkl. mva – rabatt ved faste avtaler. Gratis befaring og fornøydgaranti."/>
+  <link rel="canonical" href="https://btaas.no/hjemmerenhold.html"/>
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BTA AS">
+  <meta property="og:locale" content="no_NO">
+  <meta property="og:title" content="Hjemmerenhold i Dokka, Nordre Land m.fl. | Fra 490 kr/time | BTA AS">
+  <meta property="og:description" content="Ukentlig/månedlig vask for hjem og leiligheter. Rabatt ved faste avtaler. Gratis befaring.">
+  <meta property="og:url" content="https://btaas.no/hjemmerenhold.html">
+  <meta property="og:image" content="https://btaas.no/icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hjemmerenhold i Dokka, Nordre Land m.fl. | BTA AS">
+  <meta name="twitter:description" content="Fra 490 kr/time inkl. mva – fastpris mulig. Gratis befaring.">
+
+  <style>
+    :root{--bg:#0b1220;--card:#111827;--muted:#9aa2b2;--text:#e5e7eb;--brand:#22c55e;--brand2:#a3e635}
+    *{box-sizing:border-box}
+    body{margin:0;background:#0b1220;color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif}
+    a{color:#c8f08a;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;gap:14px;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:800}
+    .mark{width:28px;height:28px;border-radius:10px;background:conic-gradient(from 180deg,var(--brand),var(--brand2),var(--brand));box-shadow:0 8px 24px rgba(34,197,94,.35)}
+    .card{background:#111827;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px}
+    .grid{display:grid;gap:16px}
+    .g-2{grid-template-columns:1.2fr .8fr}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.g-2,.g-3{grid-template-columns:1fr}}
+    h1{margin:8px 0 6px;font-size:32px;line-height:1.2}
+    h2{margin:0 0 8px;font-size:22px}
+    .muted{color:#cbd5e1}
+    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#cbd5e1;font-size:13px}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b1220;font-weight:800;border:0}
+    .price{font-size:22px;font-weight:800}
+    ul{margin:8px 0 0 18px}
+    .small{font-size:13px;color:#9aa2b2}
+    .tags a{display:inline-block;margin:0 8px 8px 0;padding:8px 12px;border-radius:999px;border:1px dashed rgba(255,255,255,.12);color:#cbd5e1}
+  </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CleaningService",
+    "name":"BTA AS",
+    "url":"https://btaas.no/hjemmerenhold.html",
+    "serviceType":"Hjemmerenhold (privat renhold, hus og leiligheter)",
+    "priceRange":"kr",
+    "telephone":"+47 99899980",
+    "email":"post@btaas.no",
+    "areaServed":[
+      {"@type":"Place","name":"Dokka"},
+      {"@type":"Place","name":"Nordre Land"},
+      {"@type":"Place","name":"Aust-Torpa"},
+      {"@type":"Place","name":"Hov"},
+      {"@type":"Place","name":"Gjøvik"},
+      {"@type":"Place","name":"Lillehammer"},
+      {"@type":"Place","name":"Etnedal"}
+    ],
+    "provider":{
+      "@type":"LocalBusiness",
+      "name":"BTA AS",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Vest-Torpvegen 2004",
+        "postalCode":"2881",
+        "addressLocality":"Aust-Torpa",
+        "addressRegion":"Innlandet",
+        "addressCountry":"NO"
+      }
+    },
+    "makesOffer":{
+      "@type":"Offer",
+      "priceCurrency":"NOK",
+      "price":"490",
+      "description":"Fra 490 kr/time inkl. mva – rabatt ved faste avtaler. Fastpris mulig etter befaring."
+    }
+  }
+  </script>
 </head>
 <body>
-<div class="wrap">
-  <div class="card">
-    <h1>Hjemmerenhold</h1>
-    <p>Privat renhold i Nordre Land, Dokka og Gjøvik. Fast vask ukentlig/månedlig – skreddersydd etter behov.</p>
-    <a class="btn" href="/#bestill">Bestill nå</a>
-    <a class="btn" href="/" style="background:#374151;color:#fff;margin-left:8px;">← Til forsiden</a>
+  <div class="wrap">
+    <header>
+      <div class="logo"><div class="mark" aria-hidden="true"></div>BTA AS • Rengjøring</div>
+      <nav class="small"><a href="/">← Til forsiden</a></nav>
+    </header>
+
+    <div class="grid g-2">
+      <section class="card">
+        <span class="pill">Privat • Hus • Leilighet</span>
+        <h1>Profesjonell hjemmerenhold – fast avtale og fornøydgaranti</h1>
+        <p class="muted">Vi hjelper private i <strong>Dokka</strong>, <strong>Nordre Land/Aust-Torpa</strong>, <strong>Hov</strong>, <strong>Gjøvik</strong>, <strong>Lillehammer</strong> og <strong>Etnedal</strong>. Ukentlig, annenhver uke eller månedlig vask – skreddersydd etter behov. Miljøvennlige midler, forsikret arbeid og faktura fra norsk selskap.</p>
+
+        <div class="btns">
+          <a class="btn primary" href="/#bestill">Bestill vask nå</a>
+          <a class="btn" href="/#bestill">Få gratis befaring</a>
+          <a class="btn" href="tel:+4799899980">Ring: +47 99 89 99 80</a>
+        </div>
+
+        <div class="grid g-3" style="margin-top:14px">
+          <div class="card">
+            <h2>Dette inngår</h2>
+            <ul>
+              <li>Støv og overflater (inkl. lister/håndtak)</li>
+              <li>Kjøkken (benker, platetopp, skap utvendig)</li>
+              <li>Bad (dusj, servant, toalett, speil)</li>
+              <li>Støvsuging + gulvvask i alle rom</li>
+              <li>Vinduer innvendig (utvendig etter avtale)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Faste avtaler</h2>
+            <ul>
+              <li>Ukentlig / annenhver uke / månedlig</li>
+              <li><strong>Rabatt ved faste avtaler</strong></li>
+              <li>Fast kontaktperson og forutsigbarhet</li>
+              <li>Tillegg: flyttevask, utvask, sesongvask</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Pris</h2>
+            <p class="price">Fra 490 kr/time <span class="small">inkl. mva</span></p>
+            <p class="small">Fastpris mulig etter befaring. Endelig pris avhenger av areal og omfang.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="grid" style="gap:16px">
+        <div class="card">
+          <h2>Serviceområder</h2>
+          <div class="tags">
+            <a href="/hyttevask-synnfjell.html">Synnfjell</a>
+            <a href="/hyttevask-lenningen.html">Lenningen</a>
+            <a href="/hyttevask-hafjell.html">Hafjell</a>
+            <a href="/hyttevask-etnedal.html">Etnedal</a>
+            <a href="/hyttevask-bagn.html">Bagn</a>
+            <a href="/hyttevask-nord-torpa.html">Nord-Torpa</a>
+            <a href="/hyttevask-gamlestolen.html">Gamlestølen</a>
+            <a href="/hyttevask-hugulia.html">Hugulia</a>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Hvorfor velge oss?</h2>
+          <ul>
+            <li>Rask respons – ofte samme dag</li>
+            <li>Miljøvennlige midler og trygge rutiner</li>
+            <li>Forsikret – faktura fra norsk selskap</li>
+            <li>Fornøydgaranti: vi retter opp kostnadsfritt</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Kontakt</h2>
+          <p>Telefon: <a href="tel:+4799899980">+47 99 89 99 80</a><br>
+             E-post: <a href="mailto:post@btaas.no">post@btaas.no</a></p>
+          <p class="small">Åpningstider: Man–Fre 08:00–18:00 • Lørdag etter avtale</p>
+          <div class="btns">
+            <a class="btn primary" href="/#bestill">Bestill nå</a>
+            <a class="btn" href="/#bestill">Gratis befaring</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Vanlige spørsmål</h2>
+      <p><strong>Kan vi få fast dag og klokkeslett?</strong><br>Ja – ved faste avtaler avtaler vi fast dag og tidsrom.</p>
+      <p><strong>Tar dere med utstyr og midler?</strong><br>Ja, alt nødvendig utstyr og miljøvennlige midler tas med.</p>
+      <p><strong>Kan vi kombinere med vindusvask/flyttevask?</strong><br>Ja – vi skreddersyr pakken og gir samlet pris.</p>
+    </section>
+
+    <footer class="small" style="opacity:.9;margin-top:16px">
+      © <span id="year"></span> BTA AS • Org.nr 927208431
+    </footer>
   </div>
-  <div class="grid">
-    <div class="card"><h2>Dette inngår</h2><ul><li>Overflater og støv</li><li>Kjøkken/bad</li><li>Gulv (vask/støvsug)</li><li>Vinduer innvendig (utvendig etter avtale)</li></ul></div>
-    <div class="card"><h2>Pris</h2><p>Kontakt oss for pris etter areal og omfang. Fastpris mulig etter befaring.</p></div>
-  </div>
-</div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
