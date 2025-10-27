@@ -1,9 +1,5 @@
-/
-├── api
-│   ├── send-mail.js
-│   └── health.js   ← čia turi būti
-├── scripts
-│   └── inject-gtm.js
-├── index.html
-├── ...
-├── package.json
+// api/health.js
+export default function handler(req, res) {
+  res.status(200).json({ ok: true, now: Date.now() });
+}
+export const config = { runtime: "nodejs" };
