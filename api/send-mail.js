@@ -1,25 +1,21 @@
+// /api/send-mail.js
 import { Resend } from 'resend';
 
 export default async function handler(req, res) {
-  // CORS nustatymai
+  // CORS
   const allowOrigin = process.env.ALLOW_ORIGIN || "*";
   res.setHeader("Access-Control-Allow-Origin", allowOrigin);
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ ok: false, error: "Method Not Allowed" });
-  }
+  if (req.method === "OPTIONS") return res.status(200).end();
+  if (req.method !== "POST") return res.status(405).json({ ok: false, error: "Method Not Allowed" });
 
   try {
-    // Užtikriname, kad gauname JSON
+    // Užtikriname JSON input
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
-    // Paimame laukus pagal norvegiškus pavadinimus
+    // Paimame laukus iš frontendo (norvegiški pavadinimai)
     const name = body.navn?.trim();
     const phone = body.telefon?.trim();
     const email = body.epost?.trim() || "-";
@@ -32,10 +28,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: "Missing name or phone" });
     }
 
-    // Sukuriame Resend klientą
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const htmlContent = `
+    const html = `
       <h2>Ny forespørsel fra btaas.no</h2>
       <table border="1" cellpadding="6" cellspacing="0">
         <tr><td><b>Navn</b></td><td>${name}</td></tr>
@@ -48,17 +43,16 @@ export default async function handler(req, res) {
       </table>
     `;
 
-    // Siunčiame laišką
     await resend.emails.send({
-      from: process.env.FROM_EMAIL,  // pvz. "post@btaas.no"
-      to: process.env.TO_EMAIL,      // pvz. "post@btaas.no"
+      from: process.env.FROM_EMAIL,
+      to: process.env.TO_EMAIL,
       subject: "Ny forespørsel fra btaas.no",
-      html: htmlContent
+      html
     });
 
     return res.status(200).json({ ok: true });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Resend API error:", error);
     return res.status(500).json({ ok: false, error: String(error) });
   }
 }
