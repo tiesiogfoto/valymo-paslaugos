@@ -8,6 +8,6 @@
     "vercel-build": "node scripts/inject-gtm.js"
   },
   "dependencies": {
-    "nodemailer": "^6.9.14"
+    "resend": "^3.0.0"
   }
 }
