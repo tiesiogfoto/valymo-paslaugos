@@ -1,7 +1,7 @@
 // Vercel serverless funkcija: /api/send-mail
 import nodemailer from 'nodemailer';
 
-function sanitize(s) {
+function clean(s) {
   if (!s) return '';
   return String(s).replace(/[\u0000-\u001F\u007F]/g, '').trim();
 }
@@ -12,34 +12,32 @@ export default async function handler(req, res) {
       return res.status(405).json({ ok: false, error: 'Method Not Allowed' });
     }
 
-    // Honeypot: jei užpildyta – atmetam
-    if (req.body && req.body._honey) {
-      return res.status(200).json({ ok: true }); // tyliai ignoruojam botą
-    }
+    // Priimame JSON iš fronto
+    const body = req.body || {};
+    // Honeypot (jei buvo formoje) – tyliai ignoruojam
+    if (body.honey) return res.status(200).json({ ok: true });
 
-    // Paimam laukus
-    const navn = sanitize(req.body?.['Navn']);
-    const telefon = sanitize(req.body?.['Telefon']);
-    const email = sanitize(req.body?.['E-post']);
-    const tjeneste = sanitize(req.body?.['Tjeneste']);
-    const adresse = sanitize(req.body?.['Adresse']);
-    const dato = sanitize(req.body?.['Ønsket dato']);
-    const melding = sanitize(req.body?.['Melding']);
-    const nextUrl = sanitize(req.body?._next) || '/takk.html';
+    const navn     = clean(body.navn);
+    const telefon  = clean(body.telefon);
+    const epost    = clean(body.epost);
+    const tjeneste = clean(body.tjeneste);
+    const adresse  = clean(body.adresse);
+    const dato     = clean(body.dato);
+    const melding  = clean(body.melding);
 
     if (!navn || !telefon) {
       return res.status(400).json({ ok: false, error: 'Mangler navn eller telefon' });
     }
 
-    // SMTP konfigūracija (iš Vercel aplinkos kintamųjų)
+    // SMTP konfigūracija iš aplinkos kintamųjų
     const {
       SMTP_HOST,
       SMTP_PORT,
       SMTP_SECURE,
       SMTP_USER,
       SMTP_PASS,
-      MAIL_TO,     // adresas, kur GAUNI užklausas (dažniausiai tas pats kaip SMTP_USER)
-      MAIL_FROM    // kaip rodom "nuo ko" (pvz., "BTA AS <post@btaas.no>")
+      MAIL_TO,
+      MAIL_FROM
     } = process.env;
 
     if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !MAIL_TO || !MAIL_FROM) {
@@ -49,11 +47,8 @@ export default async function handler(req, res) {
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: Number(SMTP_PORT),
-      secure: String(SMTP_SECURE) === 'true', // 465 -> true, 587 -> false
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS
-      }
+      secure: String(SMTP_SECURE) === 'true', // 465=true, 587=false
+      auth: { user: SMTP_USER, pass: SMTP_PASS }
     });
 
     const subject = `Ny forespørsel: ${tjeneste || 'Rengjøring'} – ${navn}`;
@@ -63,7 +58,7 @@ export default async function handler(req, res) {
       <table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse">
         <tr><th align="left">Navn</th><td>${navn}</td></tr>
         <tr><th align="left">Telefon</th><td>${telefon}</td></tr>
-        <tr><th align="left">E-post</th><td>${email || '-'}</td></tr>
+        <tr><th align="left">E-post</th><td>${epost || '-'}</td></tr>
         <tr><th align="left">Tjeneste</th><td>${tjeneste || '-'}</td></tr>
         <tr><th align="left">Adresse</th><td>${adresse || '-'}</td></tr>
         <tr><th align="left">Ønsket dato</th><td>${dato || '-'}</td></tr>
@@ -74,18 +69,18 @@ export default async function handler(req, res) {
 
     // 1) Laiškas tau
     await transporter.sendMail({
-      from: MAIL_FROM,
-      to: MAIL_TO,
+      from: MAIL_FROM,           // pvz. "BTA AS <post@btaas.no>"
+      to: MAIL_TO,               // pvz. "post@btaas.no"
       subject,
-      replyTo: email || undefined,
+      replyTo: epost || undefined,
       html
     });
 
-    // 2) Automatinis patvirtinimas klientui (jei paliko email)
-    if (email) {
+    // 2) Auto-atsakymas klientui (jei paliko email)
+    if (epost) {
       await transporter.sendMail({
         from: MAIL_FROM,
-        to: email,
+        to: epost,
         subject: 'Vi har mottatt forespørselen din – BTA AS',
         text:
 `Hei ${navn},
@@ -97,19 +92,13 @@ Oppsummert:
 – Adresse: ${adresse || '-'}
 – Ønsket dato: ${dato || '-'}
 – Telefon: ${telefon}
-– E-post: ${email || '-'}
+– E-post: ${epost || '-'}
 
 Vennlig hilsen
 BTA AS
 +47 99 89 99 80
-post@btaas.no`,
+post@btaas.no`
       });
-    }
-
-    // Jei forma buvo siųsta naršyklėje – gražiai peradresuojam
-    if (req.headers.accept && req.headers.accept.includes('text/html')) {
-      res.setHeader('Location', nextUrl);
-      return res.status(303).end();
     }
 
     return res.status(200).json({ ok: true });
