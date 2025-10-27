@@ -1,4 +1,3 @@
-// api/send-mail.js
 import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
@@ -7,34 +6,44 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, phone, email, service, address, date, message } = req.body || {};
+    const b = req.body || {};
 
-    // minimalus validavimas
+    // Naudojam tik norvegiškus pavadinimus
+    const name    = (b.navn ?? "").toString().trim();
+    const phone   = (b.telefon ?? b.tlf ?? "").toString().trim();
+    const email   = (b.epost ?? b["e-post"] ?? "").toString().trim();
+    const service = (b.tjeneste ?? "").toString().trim();
+    const address = (b.adresse ?? "").toString().trim();
+    const date    = (b.dato ?? "").toString().trim();
+    const message = (b.melding ?? "").toString();
+
     if (!name || !phone) {
       return res.status(400).json({ ok: false, error: "Missing name or phone" });
     }
 
-    // SMTP konfigūracija iš ENV
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: String(process.env.SMTP_SECURE || "false") === "true", // 465 -> true, 587 -> false
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+      secure: String(process.env.SMTP_SECURE || "false") === "true",
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
     });
 
+    const esc = (s) =>
+      String(s || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
     const html = `
-      <h2>Nauja užklausa iš btaas.no</h2>
+      <h2>Ny forespørsel fra btaas.no</h2>
       <table border="1" cellpadding="6" cellspacing="0">
-        <tr><td><b>Vardas</b></td><td>${name}</td></tr>
-        <tr><td><b>Telefonas</b></td><td>${phone}</td></tr>
-        <tr><td><b>E-paštas</b></td><td>${email || "-"}</td></tr>
-        <tr><td><b>Paslauga</b></td><td>${service || "-"}</td></tr>
-        <tr><td><b>Adresas</b></td><td>${address || "-"}</td></tr>
-        <tr><td><b>Data</b></td><td>${date || "-"}</td></tr>
-        <tr><td><b>Žinutė</b></td><td>${(message || "").replace(/\n/g,"<br>")}</td></tr>
+        <tr><td><b>Navn</b></td><td>${esc(name)}</td></tr>
+        <tr><td><b>Telefon</b></td><td>${esc(phone)}</td></tr>
+        <tr><td><b>E-post</b></td><td>${esc(email || "-")}</td></tr>
+        <tr><td><b>Tjeneste</b></td><td>${esc(service || "-")}</td></tr>
+        <tr><td><b>Adresse</b></td><td>${esc(address || "-")}</td></tr>
+        <tr><td><b>Dato</b></td><td>${esc(date || "-")}</td></tr>
+        <tr><td><b>Melding</b></td><td>${esc(message).replace(/\n/g,"<br>")}</td></tr>
       </table>
     `;
 
@@ -53,5 +62,5 @@ export default async function handler(req, res) {
   }
 }
 
-// Kad veiktų su ESM Vercel aplinkoje:
 export const config = { api: { bodyParser: { sizeLimit: "1mb" } } };
+mit: "1mb" } } };
