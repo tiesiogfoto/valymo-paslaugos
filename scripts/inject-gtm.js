@@ -6,13 +6,13 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Tavo GTM ID:
 const GTM_ID = "GTM-P98Q99WC";
 
-// Katalogas, kuriame ieškosime .html
-const ROOT_DIR = path.join(__dirname, "..");
+const SRC_ROOT = path.join(__dirname, "..");
+const OUT_DIR  = path.join(SRC_ROOT, "public");
 
-// Įterpiamas kodas
+const EXCLUDE_DIRS = new Set([".git", "node_modules", "public", "scripts", "api"]);
+
 const gtmScript = `
 <!-- Google Tag Manager -->
 <script>
@@ -24,35 +24,41 @@ const gtmScript = `
 <!-- End Google Tag Manager -->
 `;
 
-/** Įterpia GTM <head> pradžioje, jei jo dar nėra */
-function injectGTM(filePath) {
-  const content = fs.readFileSync(filePath, "utf8");
-  if (content.includes("googletagmanager.com/gtm.js")) {
-    console.log(`GTM already present: ${filePath}`);
-    return;
-  }
-  if (!content.includes("<head>")) {
-    console.log(`No <head> tag, skipping: ${filePath}`);
-    return;
-  }
-  const updated = content.replace("<head>", `<head>\n${gtmScript}`);
-  fs.writeFileSync(filePath, updated, "utf8");
-  console.log(`Inserted GTM into: ${filePath}`);
+function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
+
+function injectIfHtml(content) {
+  if (!content.includes("<head>")) return content;
+  if (content.includes("googletagmanager.com/gtm.js")) return content;
+  return content.replace("<head>", `<head>\n${gtmScript}`);
 }
 
-/** Pereina per visus failus ir aplankus nuo ROOT_DIR */
-function walk(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      walk(full);
-    } else if (entry.isFile() && full.toLowerCase().endsWith(".html")) {
-      injectGTM(full);
+function copyTree(srcDir, outDir) {
+  ensureDir(outDir);
+  const entries = fs.readdirSync(srcDir, { withFileTypes: true });
+
+  for (const e of entries) {
+    if (EXCLUDE_DIRS.has(e.name)) continue;
+    const src = path.join(srcDir, e.name);
+    const dst = path.join(outDir, e.name);
+
+    if (e.isDirectory()) {
+      copyTree(src, dst);
+    } else if (e.isFile()) {
+      const isHtml = e.name.toLowerCase().endsWith(".html");
+      if (isHtml) {
+        const content = fs.readFileSync(src, "utf8");
+        const updated = injectIfHtml(content);
+        ensureDir(path.dirname(dst));
+        fs.writeFileSync(dst, updated, "utf8");
+        console.log(`Inserted GTM into: ${path.relative(SRC_ROOT, src)}`);
+      } else {
+        ensureDir(path.dirname(dst));
+        fs.copyFileSync(src, dst);
+      }
     }
   }
 }
 
-walk(ROOT_DIR);
-console.log("GTM injection complete.");
-
+console.log("Building static site to /public ...");
+copyTree(SRC_ROOT, OUT_DIR);
+console.log("Done. Output:", OUT_DIR);
