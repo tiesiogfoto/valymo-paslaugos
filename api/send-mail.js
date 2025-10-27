@@ -1,14 +1,39 @@
+// /api/send-mail.js
 import nodemailer from "nodemailer";
 
+/**
+ * Pilnas el. pašto API btaas.no
+ * Priima JSON su raktas->reikšmė (norvegiški laukai).
+ * Reikalingi ENV: SMTP_HOST, SMTP_PORT, SMTP_SECURE ("true"/"false"), SMTP_USER, SMTP_PASS
+ * Pasirenkami: SMTP_FROM, SMTP_TO, ALLOW_ORIGIN (pvz. https://btaas.no)
+ */
+
 export default async function handler(req, res) {
+  // CORS (paprastas) – leisti tik POST iš tavo domeno
+  const allowOrigin = process.env.ALLOW_ORIGIN || "*";
+  res.setHeader("Access-Control-Allow-Origin", allowOrigin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
   try {
+    // Priimame tik application/json
+    const ct = req.headers["content-type"] || "";
+    if (!ct.includes("application/json")) {
+      return res.status(415).json({ ok: false, error: "Unsupported Content-Type" });
+    }
+
     const b = req.body || {};
 
-    // Naudojam tik norvegiškus pavadinimus
+    // Honeypot prieš botus – jei laukelis "hp" užpildytas, nekreipiame dėmesio
+    if (b.hp) {
+      return res.status(200).json({ ok: true });
+    }
+
+    // Normalizuojame norvegiškus laukus
     const name    = (b.navn ?? "").toString().trim();
     const phone   = (b.telefon ?? b.tlf ?? "").toString().trim();
     const email   = (b.epost ?? b["e-post"] ?? "").toString().trim();
@@ -17,17 +42,41 @@ export default async function handler(req, res) {
     const date    = (b.dato ?? "").toString().trim();
     const message = (b.melding ?? "").toString();
 
+    // Minimalus validavimas
     if (!name || !phone) {
       return res.status(400).json({ ok: false, error: "Missing name or phone" });
     }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ ok: false, error: "Invalid email" });
+    }
+    if (phone.replace(/[^\d+]/g, "").length < 6) {
+      return res.status(400).json({ ok: false, error: "Invalid phone" });
+    }
 
+    // SMTP transporter
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: String(process.env.SMTP_SECURE || "false") === "true",
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+      secure: String(process.env.SMTP_SECURE || "false") === "true", // 465 -> true, 587 -> false
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
     });
 
+    // Patikriname SMTP ryšį – jei nepavyksta, grąžiname aiškią klaidą
+    try {
+      await transporter.verify();
+    } catch (e) {
+      return res.status(502).json({
+        ok: false,
+        error: "SMTP_VERIFY_FAILED",
+        code: e?.code || null,
+        details: e?.message || String(e),
+      });
+    }
+
+    // Saugus HTML
     const esc = (s) =>
       String(s || "")
         .replace(/&/g, "&amp;")
@@ -43,24 +92,43 @@ export default async function handler(req, res) {
         <tr><td><b>Tjeneste</b></td><td>${esc(service || "-")}</td></tr>
         <tr><td><b>Adresse</b></td><td>${esc(address || "-")}</td></tr>
         <tr><td><b>Dato</b></td><td>${esc(date || "-")}</td></tr>
-        <tr><td><b>Melding</b></td><td>${esc(message).replace(/\n/g,"<br>")}</td></tr>
+        <tr><td><b>Melding</b></td><td>${esc(message).replace(/\n/g, "<br>")}</td></tr>
       </table>
     `;
 
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: process.env.SMTP_TO || process.env.SMTP_USER,
-      subject: "Ny forespørsel fra btaas.no",
-      replyTo: email || process.env.SMTP_USER,
-      html,
-    });
+    // Siunčiame
+    try {
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM || process.env.SMTP_USER, // kai kurie tiekėjai reikalauja from == SMTP_USER
+        to: process.env.SMTP_TO || process.env.SMTP_USER,
+        subject: "Ny forespørsel fra btaas.no",
+        replyTo: email || process.env.SMTP_USER,
+        html,
+      });
+    } catch (e) {
+      return res.status(502).json({
+        ok: false,
+        error: "SMTP_SEND_FAILED",
+        code: e?.code || null,
+        details: e?.message || String(e),
+        response: e?.response || null,
+      });
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("send-mail error:", err);
-    return res.status(500).json({ ok: false, error: "Send failed" });
+    // Neatskleidžiame vidinių klaidų detalių production režime
+    const isProd = process.env.NODE_ENV === "production";
+    return res.status(500).json({
+      ok: false,
+      error: "HANDLER_CRASH",
+      details: isProd ? undefined : err?.message || String(err),
+    });
   }
 }
 
-export const config = { api: { bodyParser: { sizeLimit: "1mb" } } };
-mit: "1mb" } } };
+// Node runtime (ne Edge) + body parser
+export const config = {
+  runtime: "nodejs18.x",
+  api: { bodyParser: { sizeLimit: "1mb" } },
+};
