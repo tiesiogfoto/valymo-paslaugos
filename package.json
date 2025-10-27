@@ -1,9 +1,13 @@
 {
   "name": "btaas-no",
-  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "prebuild": "node scripts/inject-gtm.js",
+    "build": "echo \"Static site – nothing to build\"",
+    "vercel-build": "node scripts/inject-gtm.js"
+  },
   "dependencies": {
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.14"
   }
 }
