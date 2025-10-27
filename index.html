@@ -320,14 +320,8 @@
       <h2>Bestill befaring / få tilbud</h2>
       <div class="grid cols-2">
         <div class="card" style="padding:18px">
-          <!-- FORM — FormSubmit.co -->
-          <form id="form" action="https://formsubmit.co/post@btaas.no" method="POST" accept-charset="UTF-8">
-            <input type="hidden" name="_next" value="https://btaas.no/takk.html">
-            <input type="hidden" name="_subject" value="Ny forespørsel fra btaas.no">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_replyto" value="">
-            <input type="text" name="_honey" style="display:none">
+          <!-- FORM POSTS TO /api/send-mail -->
+          <form id="form" method="POST">
             <div class="two">
               <div class="field">
                 <label for="name">Navn</label>
@@ -341,7 +335,7 @@
             <div class="two">
               <div class="field">
                 <label for="email">E-post</label>
-                <input id="email" name="email" type="email" placeholder="deg@epost.no" />
+                <input id="email" name="E-post" type="email" placeholder="deg@epost.no" />
               </div>
               <div class="field">
                 <label for="service">Tjeneste</label>
@@ -369,8 +363,13 @@
               <label for="msg">Tilleggsinfo (areal, rom, spesielle ønsker)</label>
               <textarea id="msg" name="Melding" rows="4" placeholder="Leil. 70 m², 2 bad …"></textarea>
             </div>
+
+            <!-- Honeypot + basic bot guard -->
+            <input type="text" name="_honey" autocomplete="off" style="display:none">
+            <input type="hidden" name="_site" value="btaas.no">
+
             <button class="btn primary" type="submit">Send forespørsel</button>
-            <p class="small">Ved å sende godtar du vår personvernerklæring og at vi kan kontakte deg om forespørselen.</p>
+            <p class="small" id="form-note">Ved å sende godtar du vår personvernerklæring og at vi kan kontakte deg om forespørselen.</p>
           </form>
         </div>
         <div>
@@ -410,34 +409,72 @@
   </footer>
 
   <script>
-    // Footer year
+    // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Kalkuliatorius
+    // Simple price estimator
     const calc = document.getElementById('calc');
     const est = document.getElementById('est');
-    calc.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const type = document.getElementById('stype').value;
-      const m2 = Number(document.getElementById('size').value || 0);
-      const freq = document.getElementById('freq').value;
-      let rate = 75;
-      if(type === 'Hjemmerengjøring') rate = 12;
-      if(type === 'Kontorrengjøring') rate = 10;
-      if(type === 'Byggrengjøring') rate = 20;
-      if(type === 'Vindusvask') rate = 8;
-      let total = m2 * rate;
-      if(freq === 'Ukentlig') total *= 0.85;
-      if(freq === 'Annenhver uke') total *= 0.9;
-      if(freq === 'Månedlig') total *= 0.95;
-      est.textContent = `Estimert pris: ca. ${Math.round(total)} kr (ikke bindende – endelig pris etter befaring).`;
-    });
+    if (calc) {
+      calc.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const type = document.getElementById('stype').value;
+        const m2 = Number(document.getElementById('size').value || 0);
+        const freq = document.getElementById('freq').value;
+        let rate = 75; // kr/m² baseline
+        if(type === 'Hjemmerengjøring') rate = 12;   // kr/m² (omregnet)
+        if(type === 'Kontorrengjøring') rate = 10;
+        if(type === 'Byggrengjøring') rate = 20;
+        if(type === 'Vindusvask') rate = 8;
+        let total = m2 * rate;
+        if(freq === 'Ukentlig') total *= 0.85;
+        if(freq === 'Annenhver uke') total *= 0.9;
+        if(freq === 'Månedlig') total *= 0.95;
+        est.textContent = `Estimert pris: ca. ${Math.round(total)} kr (ikke bindende – endelig pris etter befaring).`;
+      });
+    }
 
-    // Užpildom _replyto, kad "Reply-To" būtų kliento el. paštas
-    document.getElementById('form').addEventListener('submit', ()=>{
-      const email = document.getElementById('email')?.value || '';
-      const replyto = document.querySelector('input[name="_replyto"]');
-      if (replyto) replyto.value = email;
+    // Handle form submit to Vercel API and redirect to /takk.html
+    const form = document.getElementById('form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const note = document.getElementById('form-note');
+      btn.disabled = true; btn.textContent = 'Sender...';
+
+      // Build payload
+      const data = {
+        navn: form.querySelector('#name')?.value || '',
+        telefon: form.querySelector('#phone')?.value || '',
+        epost: form.querySelector('#email')?.value || '',
+        tjeneste: form.querySelector('#service')?.value || '',
+        adresse: form.querySelector('#address')?.value || '',
+        dato: form.querySelector('#date')?.value || '',
+        melding: form.querySelector('#msg')?.value || '',
+        honey: form.querySelector('input[name="_honey"]')?.value || '',
+        site: 'btaas.no'
+      };
+
+      try {
+        const res = await fetch('/api/send-mail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          window.location.href = '/takk.html';
+        } else {
+          const txt = await res.text();
+          alert('Klarte ikke å sende forespørselen. Prøv igjen, eller ring oss: +47 99 89 99 80.\n\n' + txt);
+          btn.disabled = false; btn.textContent = 'Send forespørsel';
+          if (note) note.textContent = 'Feil ved sending – prøv igjen eller kontakt oss på telefon.';
+        }
+      } catch (err) {
+        alert('Nettverksfeil. Sjekk forbindelsen og prøv igjen, eller ring oss: +47 99 89 99 80.');
+        btn.disabled = false; btn.textContent = 'Send forespørsel';
+        if (note) note.textContent = 'Feil ved sending – prøv igjen eller kontakt oss på telefon.';
+      }
     });
   </script>
 </body>
